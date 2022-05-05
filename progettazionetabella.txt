@@ -1,0 +1,41 @@
+CREATE TABLE [dbo].[Stanze]
+(
+	[numero] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [numero_piano] INT NOT NULL, 
+    [numero_letti] INT NULL
+)
+
+CREATE TABLE [dbo].[Ospiti]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [name] VARCHAR(50) NOT NULL, 
+    [surname] VARCHAR(50) NOT NULL, 
+    [data_nascita] DATETIME NOT NULL, 
+    [tipo_documento] VARCHAR(50) NOT NULL, 
+    [numero_documento] BIGINT NOT NULL
+)
+
+CREATE TABLE [dbo].[Configurazione]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [tipo_letto] VARCHAR(50) NOT NULL, 
+    [titolo] VARCHAR(50) NOT NULL, 
+    [descrizione] VARCHAR(50) NULL
+)
+
+CREATE TABLE [dbo].[Prenotazioni]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [stanze_numero] INT NOT NULL, 
+    [pagamento_id] INT NOT NULL, 
+    [ospiti_id] INT NOT NULL, 
+    [prezzo] DECIMAL(6, 2) NOT NULL
+)
+
+CREATE TABLE [dbo].[Pagamento]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [stato_pagamento] VARCHAR(50) NOT NULL, 
+    [importo_pagato] DECIMAL(6, 2) NOT NULL, 
+    [ospiti_id ] INT NULL, 
+)
